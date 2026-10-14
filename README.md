@@ -7,10 +7,42 @@
 ## 📊 Sobre a base
 - **72.529 linhas** x 30 colunas
 - **Recorte temporal:** 01/01/2025 a 31/12/2025
-- **3 colunas numéricas:** km, feridos, mortos, veículos, latitude, longitude
+- **6 colunas numéricas:** km, feridos, mortos, veículos, latitude, longitude
 - **Categóricas:** uf, tipo_acidente, causa_acidente, classificacao_acidente, dia_semana, fase_dia
 
-Dicionário: `id` (registro), `uf` (estado), `br` (rodovia), `causa_acidente`, `tipo_acidente`, `classificacao_acidente` (Sem Vítimas, Com Vítimas Feridas, Com Vítimas Fatais)
+📖 Dicionário Simplificado
+
+| Campo                   | Descrição                                  |
+| ----------------------- | ------------------------------------------ |
+| id                      | Identificador da ocorrência                |
+| uf                      | Unidade Federativa                         |
+| br                      | Rodovia Federal                            |
+| km                      | Quilômetro da ocorrência                   |
+| municipio               | Município da ocorrência                    |
+| tipo\_acidente          | Tipo do acidente registrado                |
+| causa\_acidente         | Causa informada pela PRF                   |
+| classificacao\_acidente | Sem vítimas, com vítimas feridas ou fatais |
+| mortos                  | Número de vítimas fatais                   |
+| feridos                 | Quantidade total de feridos                |
+
+
+🧹 Limpeza e Transformação dos Dados
+
+As principais etapas de preparação da base foram:
+
+- Identificação e tratamento de valores faltantes;
+- Verificação de registros duplicados;
+- Conversão de tipos de dados (datas e variáveis numéricas);
+- Padronização de categorias textuais;
+- Análise de outliers utilizando IQR por UF;
+- Criação de variáveis derivadas para enriquecer as análises.
+
+Decisões adotadas
+
+- Valores ausentes em classificacao_acidente, regional, delegacia e uop foram preenchidos com "não informado" por representarem ausência de preenchimento operacional.
+- A coluna km apresentou aproximadamente 36,7% de valores ausentes e foi mantida como NaN, pois não era necessária para as análises principais e sua imputação poderia introduzir viés.
+- Não foram identificados registros duplicados.
+- As colunas categóricas foram padronizadas para evitar inconsistências de grafia e capitalização.
 
 ## ❓ Perguntas definidas ANTES da análise
 1. Quais tipos de acidente são mais frequentes e o que isso indica sobre comportamento?
@@ -57,3 +89,9 @@ seu-projeto/
 ## 📝 Git
 - Branch main + feat/limpeza
 - 15+ commits com mensagens descritivas
+
+## 📝 Controle de Versão
+Repositório GitHub público.
+Histórico de commits distribuído entre os integrantes.
+Mensagens de commit descritivas seguindo boas práticas.
+Controle de evolução do projeto através do Git.
